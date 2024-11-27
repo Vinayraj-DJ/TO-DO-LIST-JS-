@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO_DO_LIST</title>
+    <style>
+        li{
+            color: darkblue;
+        }
+       button{
+        background-color: red;
+        padding: 5px;
+       border: 5px solid black;
+       color: white;
+       border-radius: 10px;
+       margin-left: 50%;
+       }
+       #maindiv{
+        background-color: pink;
+        padding: 30px;
+        border-radius: 5px;
+       }
+       
+    </style>
+  </head>
+  <body><div id="maindiv"><center>
+    <form id="get_form">
+      <input type="text" id="get_text" placeholder="Add New Todo" />
+      <input type="submit" value="Add" />
+    </form></center></div>
+    <!--It is a empty list where new tasks will be added as list items(li)-->
+    <ul id="get_list"></ul>
+   
+    <script>
+      // The script connects the form ("get_form"), the text box("get_text") and the list("get_list") in the H T M L
+      let form = document.getElementById("get_form");
+      let text = document.getElementById("get_text");
+      let list = document.getElementById("get_list");
+
+      form.addEventListener("submit", (event) => {
+        // Prevent default method is used to prevent the reloading the page
+        event.preventDefault();
+        // Creating one list item
+        let list_item = document.createElement("li");
+        // Inserting input test into the list item
+        list_item.innerText = text.value+"  ";
+        // Creating one button
+        let btn=document.createElement("button")
+
+        btn.addEventListener("click",()=>{
+        list.removeChild(list_item)
+      })
+
+        // Change the button name
+        btn.innerHTML="Delete";
+       
+        // Inserting button into the list item
+       list_item.appendChild(btn)
+
+        list.appendChild(list_item);
+        // It clears the text box after adding
+        text.value=""
+      });
+
+      btn.addEventListener("click",()=>{
+        list.removeChild(list_item)
+      })
+    </script>
+    
+  </body>
+</html>
